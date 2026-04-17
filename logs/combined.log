@@ -436,3 +436,41 @@
 2026-04-13 21:11:50 [WARN] [DB] MongoDB disconnected
 2026-04-13 21:11:50 [INFO] [DB] MongoDB reconnected
 2026-04-13 21:12:41 [INFO] [DB] MongoDB reconnected
+2026-04-15 09:23:10 [WARN] [DB] MongoDB disconnected
+2026-04-15 09:23:41 [INFO] [DB] MongoDB connected
+2026-04-15 09:23:41 [DEBUG] [Queue] Registered handler for: incoming_message
+2026-04-15 09:23:41 [INFO] [Worker] All handlers registered
+2026-04-15 09:23:41 [INFO] ──────────────────────────────────────────
+2026-04-15 09:23:41 [INFO]   WhatsApp SaaS Chatbot Platform
+2026-04-15 09:23:41 [INFO]   Env     : development
+2026-04-15 09:23:41 [INFO]   Port    : 3000
+2026-04-15 09:23:41 [INFO]   Health  : http://localhost:3000/health
+2026-04-15 09:23:41 [INFO]   Webhook : http://localhost:3000/webhook
+2026-04-15 09:23:41 [INFO] ──────────────────────────────────────────
+2026-04-15 09:26:14 [INFO] [DB] MongoDB reconnected
+2026-04-15 09:26:14 [INFO] [DB] MongoDB reconnected
+2026-04-15 09:28:38 [INFO] [TenantRepo] Created tenant: businessbot
+2026-04-15 09:28:38 [INFO] [TenantService] Onboarded: businessbot
+2026-04-15 09:28:38 [HTTP] POST /tenants 201 26505.501 ms
+2026-04-15 09:30:42 [INFO] [DB] MongoDB reconnected
+2026-04-15 09:32:26 [INFO] [DB] MongoDB reconnected
+2026-04-15 09:34:32 [INFO] [DB] MongoDB reconnected
+2026-04-15 09:34:43 [WARN] [DB] MongoDB disconnected
+2026-04-15 09:34:43 [INFO] [DB] MongoDB reconnected
+2026-04-15 09:43:14 [INFO] [DB] MongoDB reconnected
+2026-04-15 09:44:24 [WARN] [DB] MongoDB disconnected
+2026-04-15 09:44:25 [INFO] [DB] MongoDB reconnected
+2026-04-15 09:45:04 [INFO] [DB] MongoDB reconnected
+2026-04-15 09:45:04 [INFO] [DB] MongoDB reconnected
+2026-04-15 09:45:21 [WARN] [DB] MongoDB disconnected
+2026-04-15 09:45:21 [INFO] [DB] MongoDB reconnected
+2026-04-15 09:47:26 [WARN] [DB] MongoDB disconnected
+2026-04-15 09:47:26 [INFO] [DB] MongoDB reconnected
+2026-04-15 09:52:05 [INFO] [DB] MongoDB reconnected
+2026-04-15 09:52:20 [WARN] [DB] MongoDB disconnected
+2026-04-15 09:52:20 [INFO] [DB] MongoDB reconnected
+2026-04-15 09:53:18 [INFO] [DB] MongoDB reconnected
+2026-04-15 09:53:22 [INFO] [DB] MongoDB reconnected
+2026-04-15 11:23:06 [WARN] [DB] MongoDB disconnected
+2026-04-15 11:23:06 [INFO] [DB] MongoDB reconnected
+2026-04-15 11:40:39 [INFO] [DB] MongoDB reconnected
