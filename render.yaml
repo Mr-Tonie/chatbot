@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: whatsapp-saas-chatbot
+    runtime: node
+    buildCommand: npm install
+    startCommand: node src/server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
