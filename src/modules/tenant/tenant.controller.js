@@ -1,27 +1,15 @@
-/**
- * src/modules/tenant/tenant.controller.js
- * HTTP LAYER only.
- * Access token is NEVER returned in any response.
- */
 const tenantService = require('./tenant.service');
 
-// Strip sensitive fields before sending to client
 const sanitize = (tenant) => {
   const obj = typeof tenant.toObject === 'function' ? tenant.toObject() : { ...tenant };
-  if (obj.whatsapp) {
-    delete obj.whatsapp.accessToken;
-  }
+  if (obj.whatsapp) delete obj.whatsapp.accessToken;
   return obj;
 };
 
 const getAllTenants = async (req, res, next) => {
   try {
     const tenants = await tenantService.getAllTenants();
-    res.status(200).json({
-      success: true,
-      count: tenants.length,
-      data: tenants.map(sanitize),
-    });
+    res.status(200).json({ success: true, count: tenants.length, data: tenants.map(sanitize) });
   } catch (err) { next(err); }
 };
 
@@ -41,4 +29,16 @@ const updateStatus = async (req, res, next) => {
   } catch (err) { next(err); }
 };
 
-module.exports = { getAllTenants, createTenant, updateStatus };
+const updateToken = async (req, res, next) => {
+  try {
+    const { clientId } = req.params;
+    const { accessToken } = req.body;
+    if (!accessToken) {
+      return res.status(400).json({ error: 'accessToken is required' });
+    }
+    const tenant = await tenantService.updateToken(clientId, accessToken);
+    res.status(200).json({ success: true, data: sanitize(tenant) });
+  } catch (err) { next(err); }
+};
+
+module.exports = { getAllTenants, createTenant, updateStatus, updateToken };
