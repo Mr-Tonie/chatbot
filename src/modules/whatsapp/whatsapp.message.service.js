@@ -1,11 +1,5 @@
 /**
  * src/modules/whatsapp/whatsapp.message.service.js
- *
- * TRANSPORT LAYER only.
- * Resolves tenant → validates → enqueues → returns.
- *
- * RULE: If tenant cannot be resolved, message is DROPPED.
- * No fallback. No data leakage between clients. Ever.
  */
 const queue = require('../../queue/queue');
 const tenantService = require('../tenant/tenant.service');
@@ -21,27 +15,23 @@ const handleIncoming = async (body) => {
 
   const { userPhone, messageId, type, text, phoneNumberId } = message;
 
-  // Resolve tenant — hard stop if not found
   if (!phoneNumberId) {
-    logger.error('[WA:msg] ❌ No phoneNumberId in payload — message dropped');
+    logger.error('[WA:msg] No phoneNumberId in payload — message dropped');
     return;
   }
 
   const tenant = await tenantService.resolveByPhoneNumberId(phoneNumberId);
 
   if (!tenant) {
-    // Error already logged in tenantService
     return;
   }
 
-  logger.info(
-    `[WA:msg] ✅ Tenant: ${tenant.clientId} | From: ${userPhone} | type: ${type}`
-  );
+  logger.info(`[WA:msg] Tenant: ${tenant.clientId} | From: ${userPhone} | type: ${type}`);
 
-  // Enqueue with tenant-specific access token
   queue.enqueue('incoming_message', {
     clientId: tenant.clientId,
-    accessToken: tenant.whatsapp.accessToken, // tenant's own token
+    accessToken: tenant.whatsapp.accessToken,
+    phoneNumberId: tenant.whatsapp.phoneNumberId,
     userPhone,
     messageId,
     type,
